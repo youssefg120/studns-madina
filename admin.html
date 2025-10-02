@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - منصة المذاكرة</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .admin-panel {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-color);
+            min-height: 100vh;
+        }
+
+        .admin-panel h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 1rem;
+        }
+
+        .admin-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .admin-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-group {
+            margin: 1.5rem 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        .submit-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: #2980b9;
+            transform: translateY(-1px);
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            background: var(--primary-color);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-panel">
+        <h1>🎯 لوحة تحكم منصة المذاكرة</h1>
+        
+        <!-- إضافة محاضرة -->
+        <div class="admin-card">
+            <h3>📹 إضافة محاضرة جديدة</h3>
+            <form id="addLectureForm">
+                <div class="form-group">
+                    <label>عنوان المحاضرة:</label>
+                    <input type="text" id="lectureTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>الفرقة:</label>
+                    <select id="lectureLevel" required>
+                        <option value="first">فرقة أولى</option>
+                        <option value="second">فرقة ثانية</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>رابط الفيديو:</label>
+                    <input type="text" id="lectureVideoUrl" placeholder="https://..." required>
+                </div>
+                <div class="form-group">
+                    <label>الوصف (اختياري):</label>
+                    <textarea id="lectureDescription" rows="3"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">➕ إضافة المحاضرة</button>
+            </form>
+        </div>
+
+        <!-- إضافة مراجعة -->
+        <div class="admin-card">
+            <h3>🔄 إضافة مراجعة</h3>
+            <form id="addReviewForm">
+                <div class="form-group">
+                    <label>عنوان المراجعة:</label>
+                    <input type="text" id="reviewTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>محتوى المراجعة:</label>
+                    <textarea id="reviewContent" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>رابط الملف (اختياري):</label>
+                    <input type="text" id="reviewFileUrl" placeholder="https://...">
+                </div>
+                <button type="submit" class="submit-btn">➕ إضافة المراجعة</button>
+            </form>
+        </div>
+
+        <!-- إضافة بابل شيت -->
+        <div class="admin-card">
+            <h3>📄 إضافة بابل شيت</h3>
+            <form id="addBubbleSheetForm">
+                <div class="form-group">
+                    <label>اسم المادة:</label>
+                    <input type="text" id="bubbleSubject" required>
+                </div>
+                <div class="form-group">
+                    <label>رابط الملف:</label>
+                    <input type="text" id="bubbleFileUrl" placeholder="https://..." required>
+                </div>
+                <button type="submit" class="submit-btn">➕ إضافة البابل شيت</button>
+            </form>
+        </div>
+
+        <!-- إضافة امتحان -->
+        <div class="admin-card">
+            <h3>📝 إضافة امتحان</h3>
+            <form id="addExamForm">
+                <div class="form-group">
+                    <label>عنوان الامتحان:</label>
+                    <input type="text" id="examTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>الفرقة:</label>
+                    <select id="examLevel" required>
+                        <option value="first">فرقة أولى</option>
+                        <option value="second">فرقة ثانية</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>السنة:</label>
+                    <input type="number" id="examYear" min="2010" max="2024" value="2024" required>
+                </div>
+                <div class="form-group">
+                    <label>رابط الملف:</label>
+                    <input type="text" id="examFileUrl" placeholder="https://..." required>
+                </div>
+                <div class="form-group">
+                    <label>الوصف (اختياري):</label>
+                    <textarea id="examDescription" rows="3"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">➕ إضافة الامتحان</button>
+            </form>
+        </div>
+
+        <!-- إضافة رسالة تحفيزية -->
+        <div class="admin-card">
+            <h3>💪 إضافة رسالة تحفيزية</h3>
+            <form id="addMotivationForm">
+                <div class="form-group">
+                    <label>الرسالة التحفيزية (باللهجة المصرية):</label>
+                    <textarea id="motivationMessage" rows="3" placeholder="اكتب رسالة تحفيزية باللهجة المصرية..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">➕ إضافة الرسالة</button>
+            </form>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="index.html" class="back-btn">🏠 الرجوع للصفحة الرئيسية</a>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة المذاكرة - المعهد</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- رسالة الترحيب -->
+    <div id="welcomeMessage" class="welcome-message">
+        <div class="welcome-content">
+            <h2>🎓 أهلاً بيك يا بطل! 🎓</h2>
+            <p>منصة المذاكرة بتاعتك جاهزة.. بينا نقفل المذاكرة!</p>
+            <button onclick="closeWelcome()" class="welcome-btn">يلا بينا! 💪</button>
+        </div>
+    </div>
+
+    <!-- الهيدر المحسن -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="datetime" id="datetime">
+                    <!-- التاريخ والوقت يظهر هنا -->
+                </div>
+                <h1 class="logo">📚 منصة المذاكرة</h1>
+                <button id="themeToggle" class="theme-btn">🌙 الوضع الليلي</button>
+            </div>
+            
+            <nav class="nav">
+                <a href="#lectures" class="nav-link">📹 المحاضرات</a>
+                <a href="#reviews" class="nav-link">🔄 المراجعات</a>
+                <a href="#exams" class="nav-link">📝 الامتحانات</a>
+                <a href="#bubble-sheets" class="nav-link">📋 نماذج الإجابة</a>
+                <a href="admin.html" class="admin-btn">⚙️ لوحة الإدارة</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- شريط الأخبار -->
+    <div class="news-bar">
+        <div class="news-container">
+            <span class="news-label">📢 أخبار الموقع:</span>
+            <div class="news-ticker" id="newsTicker">
+                <span>مرحباً بطلاب الفرقة الأولى والثانية! المنصة جاهزة للمذاكرة 💪</span>
+                <span>📅 الامتحانات النهائية تبدأ قريباً.. استعدوا من الآن!</span>
+                <span>🎯 جديد: تم إضافة محاضرات وامتحانات سابقة</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- قسم التحفيز -->
+    <section class="motivation-section">
+        <div class="container">
+            <div class="motivation-card">
+                <h3>💪 رسالة تحفيزية</h3>
+                <p id="motivationText">النجاح هو مجموع الجهود الصغيرة المتكررة يوماً بعد يوم</p>
+                <button onclick="changeMotivation()" class="refresh-btn">🔄 رسالة جديدة</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main">
+        <div class="container">
+            <!-- إحصائيات سريعة -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📹</div>
+                        <div class="stat-info">
+                            <h3 id="lecturesCount">0</h3>
+                            <p>محاضرة</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+                        <div class="stat-info">
+                            <h3 id="examsCount">0</h3>
+                            <p>امتحان</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📋</div>
+                        <div class="stat-info">
+                            <h3 id="sheetsCount">0</h3>
+                            <p>نموذج إجابة</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔄</div>
+                        <div class="stat-info">
+                            <h3 id="reviewsCount">0</h3>
+                            <p>مراجعة</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم المحاضرات -->
+            <section id="lectures" class="section">
+                <h2 class="section-title">📖 المحاضرات</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">جميع المحاضرات</button>
+                    <button class="filter-btn" data-filter="first">فرقة أولى</button>
+                    <button class="filter-btn" data-filter="second">فرقة ثانية</button>
+                </div>
+                <div class="courses-grid" id="lecturesContainer">
+                    <!-- المحتوى يظهر هنا -->
+                </div>
+            </section>
+
+            <!-- قسم المراجعات -->
+            <section id="reviews" class="section">
+                <h2 class="section-title">📝 المراجعات</h2>
+                <div class="reviews-grid" id="reviewsContainer">
+                    <!-- المحتوى يظهر هنا -->
+                </div>
+            </section>
+
+            <!-- قسم نماذج الإجابة -->
+            <section id="bubble-sheets" class="section">
+                <h2 class="section-title">📋 نماذج الإجابة</h2>
+                <div class="bubble-grid" id="bubbleSheetsContainer">
+                    <!-- المحتوى يظهر هنا -->
+                </div>
+            </section>
+
+            <!-- قسم الامتحانات -->
+            <section id="exams" class="section">
+                <h2 class="section-title">📊 الامتحانات السابقة</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-level="all">جميع الامتحانات</button>
+                    <button class="filter-btn" data-level="first">فرقة أولى</button>
+                    <button class="filter-btn" data-level="second">فرقة ثانية</button>
+                </div>
+                <div class="exams-grid" id="examsContainer">
+                    <!-- المحتوى يظهر هنا -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 منصة المذاكرة - جميع الحقوق محفوظة</p>
+            <p>صمم بخ❤️ لطلابنا الأبطال</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
